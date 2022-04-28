@@ -4,7 +4,7 @@ Projeto feito com o intuito de aprimorar e aprender tecnologias do ReactJS
 
 ## Live Preview 🔗
 
-[Marvel Heroes](https://davysonwss-github-explorer.vercel.app)
+[GitHub Explorer](https://davysonwss-github-explorer.vercel.app)
 
 ## Desafios e Aprendizados 📌
 

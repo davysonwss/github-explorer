@@ -13,9 +13,9 @@ function Dashboard() {
   const [newUser, setNewUser] = useState("");
   const [inputError, setInputError] = useState("");
 
-  const [users, setUsers] = useState(() => {
-    const storagedUsers = localStorage.getItem("@GitHubExplorer:users");
+  const storagedUsers = localStorage.getItem("@GitHubExplorer:users");
 
+  const [users, setUsers] = useState(() => {
     if (storagedUsers) {
       return JSON.parse(storagedUsers);
     } else {
@@ -33,9 +33,16 @@ function Dashboard() {
       const response = await api.get(`users/${newUser}`);
       const user = response.data;
 
-      setUsers([...users, user]);
-      setNewUser("");
-      setInputError("");
+      if (users.length >= 5) {
+        users.shift();
+        setUsers([...users, user]);
+        setNewUser("");
+        setInputError("");
+      } else {
+        setUsers([...users, user]);
+        setNewUser("");
+        setInputError("");
+      }
     } catch (error) {
       setInputError("Erro na busca por esse usuário");
     }
@@ -52,6 +59,7 @@ function Dashboard() {
             value={newUser}
             onChange={(e) => setNewUser(e.target.value)}
           />
+
           <button type="submit">Pesquisar</button>
         </Form>
 

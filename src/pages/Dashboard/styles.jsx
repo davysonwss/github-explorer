@@ -44,7 +44,7 @@ export const Form = styled.form`
     }
   }
 
-  button {
+  button[type="submit"] {
     display: flex;
     align-items: center;
 
@@ -59,6 +59,7 @@ export const Form = styled.form`
     border-radius: 0 5px 5px 0;
     background: var(--green);
     transition: background-color 0.2s;
+    text-decoration: none;
 
     &:hover {
       background: ${shade(0.2, "#04D361")};
@@ -74,6 +75,7 @@ export const Error = styled.span`
 
 export const Users = styled.div`
   max-width: 715px;
+  margin: 0 0 100px;
 
   a {
     display: flex;

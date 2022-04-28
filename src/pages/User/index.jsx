@@ -30,6 +30,19 @@ function User() {
     });
   }, [params.username]);
 
+  const userNumbersInfos = getRepositories.reduce((prevVal, elem) => {
+    return {
+      stars:
+        (prevVal.stars === undefined ? 0 : prevVal.stars) +
+        elem.stargazers_count,
+      forks:
+        (prevVal.forks === undefined ? 0 : prevVal.forks) + elem.forks_count,
+      issues:
+        (prevVal.issues === undefined ? 0 : prevVal.issues) +
+        elem.open_issues_count,
+    };
+  }, 0);
+
   return (
     <>
       <Header btnBack />
@@ -47,17 +60,17 @@ function User() {
           </UserInfoHeader>
           <UserInfoNumbers>
             <li>
-              <strong>{user.followers}</strong>
+              <strong>{userNumbersInfos.stars}</strong>
               <span>Stars</span>
             </li>
 
             <li>
-              <strong>{user.following}</strong>
+              <strong>{userNumbersInfos.forks}</strong>
               <span>Forks</span>
             </li>
 
             <li>
-              <strong>{user.following}</strong>
+              <strong>{userNumbersInfos.issues}</strong>
               <span>Issues open</span>
             </li>
           </UserInfoNumbers>

@@ -15,7 +15,6 @@ import {
 function Repository() {
   const infoRepos = useLocation().state;
 
-  console.log(infoRepos);
   return (
     <>
       <Header btnBack />
